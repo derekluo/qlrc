@@ -1,0 +1,30 @@
+{
+  "name": "qlrc",
+  "version": "0.1.0",
+  "description": "Chrome extension for www.qlrc.com",
+  "permissions": [
+    "declarativeContent",
+    "storage",
+    "alarms",
+    "cookies", "https://www.qlrc.com/"
+  ],
+  "options_page": "options.html",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+    "js": ["qlrc.js"],
+    "matches": ["http://*/*", "https://*/*"]
+  }],
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "images/favicon.ico"
+    }
+  },
+  "icons": {
+    "32": "images/favicon.ico"
+  },
+  "manifest_version": 2
+}
