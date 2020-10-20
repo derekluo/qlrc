@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta data-n-head="ssr" charset="utf-8">
   <style>
     button {
       height: 30px;
@@ -13,13 +14,14 @@
 
 <body>
   <div>
-    <label id="autoUpdate"></label>
+    <label>职位更新记录: </label>
+    <list id="info"> </list>
   </div>
   <div>
-    <button id="getJobs">getJobs</button>
+    <button id="updateJobs">随机更新1个职位</button>
   </div>
-  <ol id="jobs">
-  </ol>
+
+  <script src="jquery-3.5.1.min.js"></script>
   <script src="qlrc.js"></script>
   <script src="popup.js"></script>
 </body>

@@ -3,24 +3,14 @@
 // found in the LICENSE file.
 'use strict';
 
-let getJobs = document.getElementById('getJobs');
-let autoUpdate = document.getElementById('autoUpdate');
+let updateJobs = document.getElementById('updateJobs');
+// let autoUpdate = document.getElementById('autoUpdate');
 
-getJobs.onclick = function (mouseEvent) {
-  console.log("GetJobs in the popups page clicked: " + mouseEvent);
-
-  chrome.cookies.get({
-    url: "https://www.qlrc.com/",
-    name: "CaLoginToken"
-  }, function (cookie) {
-    console.log("cookie found: " + cookie.name + ", " + cookie.value);
-
-    let qlrc = new Qlrc(cookie.value);
-    qlrc.getJobs();
-
-  });
+updateJobs.onclick = function (mouseEvent) {
+  console.log("UpdateJobs in the popups page clicked: " + mouseEvent);
+  doUpdateJobs();
 };
 
-chrome.storage.sync.get('autoUpdate', function (data) {
-  autoUpdate.innerHTML = "Auto update: " + data.autoUpdate;
-});
+// chrome.storage.sync.get('autoUpdate', function (data) {
+//   autoUpdate.innerHTML = "Auto update: " + data.autoUpdate;
+// });

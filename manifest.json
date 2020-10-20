@@ -10,11 +10,11 @@
   ],
   "options_page": "options.html",
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["jquery-3.5.1.min.js", "qlrc.js", "background.js"],
     "persistent": false
   },
   "content_scripts": [{
-    "js": ["qlrc.js"],
+    "js": ["jquery-3.5.1.min.js", "qlrc.js"],
     "matches": ["http://*/*", "https://*/*"]
   }],
   "page_action": {

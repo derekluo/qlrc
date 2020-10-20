@@ -2,9 +2,15 @@
 
 chrome.runtime.onInstalled.addListener(function () {
   chrome.storage.sync.set({
-    autoFresh: false
+    autoFresh: true
   }, function () {
-    console.log('The auto update is disabled.');
+
+    chrome.alarms.create("toggleAlarm", {
+      // delayInMinutes: 1,
+      periodInMinutes: 1
+    });
+
+    console.log('The auto update is enabled.');
   });
 
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
@@ -17,16 +23,9 @@ chrome.runtime.onInstalled.addListener(function () {
       actions: [new chrome.declarativeContent.ShowPageAction()]
     }]);
   });
-
-});
-
-let alarmName = "toggleAlarm";
-
-chrome.alarms.create(alarmName, {
-  // delayInMinutes: 1,
-  periodInMinutes: 1
 });
 
 chrome.alarms.onAlarm.addListener(function (alarm) {
   console.log("alam fired: " + JSON.stringify(alarm));
+  doUpdateJobs();
 });
