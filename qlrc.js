@@ -63,8 +63,12 @@ Qlrc.prototype.updateJobs = function (func) {
     });
 };
 
+function dateToString(datetime) {
+    return datetime.getFullYear() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getDate() + " " + datetime.getHours() + ":" + datetime.getMinutes() + ":" + datetime.getSeconds();
+}
+
 function jobToString(job) {
-    return job.id + ", " + job.name + ", " + job.dcJobTypeId + ", " + job.refreshDate;
+    return job.id + ", " + job.name + ", " + job.dcJobTypeId + ", " + dateToString(new Date(job.refreshDate));
 }
 
 function updatePopupInfo(job) {
@@ -73,7 +77,7 @@ function updatePopupInfo(job) {
     });
 
     for (var i = 0; i < views.length; i++) {
-        var jobText = jobToString(job) + "/" + new Date();
+        var jobText = jobToString(job) + "/ " + dateToString(new Date());
         var li = document.createElement("LI");
         li.appendChild(document.createTextNode(jobText));
         views[i].document.getElementById('info').appendChild(li);
